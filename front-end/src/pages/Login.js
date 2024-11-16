@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const handleLogin = () => {
         // Handle login logic here
         console.log('Email:', email);
         console.log('Password:', password);
+        navigate('/dashboard');
     };
 
     return (
