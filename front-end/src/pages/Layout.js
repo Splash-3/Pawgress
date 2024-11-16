@@ -18,7 +18,7 @@ const Layout = () => {
       <div className="container-fluid" id="navContainer">
         <div className="row">
           <div className="col-md-3" id="logo">
-            <h1 className="display-3 fw-bold" id="homeButton" onClick={() => navigate('/')}>Pawgress</h1>
+            <h1 className="display-3 fw-bold pointer" id="homeButton" onClick={() => navigate('/')} style={{ cursor: 'pointer' }} >Pawgress</h1>
           </div>
           <div className="col-md-6 d-flex justify-content-center align-items-center" id="navbar">
             <div className="btn-group-lg" role="group" aria-label="Basic example">
