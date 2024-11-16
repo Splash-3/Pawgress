@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import cat1 from "../images/cat1.jpg"
+// import dog1 from "../images/dog1"
+// import dog2 from "../images/dog2"
+import "../styles/landing.css"
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -29,11 +33,13 @@ const Landing = () => {
               </p>
             </div>
             <div className="col-md-6" id="petImgs">
-              {/* Add your pet images or content here */}
+              <img src={cat1} class="img-fluid" alt="cat1"/>
             </div>
           </div>
           <div className="row">
-            {/* Additional content can go here */}
+            <div class="col-sm-12 d-flex justify-content-center">
+                <hr className="line1"></hr>
+            </div>
           </div>
         </div>
       )}

@@ -1,0 +1,9 @@
+.line1 {
+    border-width: 0.17rem;
+    border-style: solid;
+    width: 80%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    border-color: black;
+    opacity: 1;
+}

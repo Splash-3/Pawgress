@@ -6,10 +6,6 @@ import Upload from './pages/UploadImage';
 import Landing from './pages/Landing';
 import Layout from './pages/Layout';
 
-import cat1 from "./images/cat1.jpg"
-import dog1 from "./images/dog1.jpg"
-import dog2 from "./images/dog2.jpg"
-
 function App() {
   return (
     <Router>
