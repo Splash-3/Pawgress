@@ -1,27 +1,8 @@
-from flask import Flask
-from backend.routes.users import user_bp
-from backend.routes.pets import pet_bp
-from backend.routes.predictions import prediction_bp
-
-app = Flask(__name__)
-
-# Register Blueprints
-app.register_blueprint(user_bp)
-app.register_blueprint(pet_bp)
-app.register_blueprint(prediction_bp)
-
-# Test route
-@app.route("/", methods=["GET"])
-def index():
-    return "Firebase and Firestore are set up successfully!"
-
 from flask import Flask, request, jsonify
 from werkzeug.utils import secure_filename
+from backend.utils.rekognition import detect_dog_or_cat
+from backend.utils.dog_breed_classifier import classify_dog_breed
 import os
-
-# Import utility functions
-from utils.rekognition import detect_dog_or_cat
-from utils.dog_breed_classifier import classify_dog_breed
 
 app = Flask(__name__)
 
@@ -46,7 +27,7 @@ def upload_image():
 
         # Open the file for reading
         with open(file_path, 'rb') as image_file:
-            # Step 1: Check if the image is a dog or a cat using Rekognition
+            # Step 1: Check if the image is a dog or a cat
             pet_type = detect_dog_or_cat(image_file)
             if not pet_type:
                 return jsonify({"error": "Neither a dog nor a cat detected"})
@@ -60,7 +41,6 @@ def upload_image():
                     "confidence": breed_info.get("confidence", "N/A")
                 })
 
-            # If it's a cat, return that info
             return jsonify({"pet_type": pet_type})
 
 if __name__ == '__main__':
