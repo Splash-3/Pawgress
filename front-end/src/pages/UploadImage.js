@@ -84,10 +84,10 @@ const UploadImage = () => {
               onChange={handleFileChange} 
             />
           </div>
-          {selectedImage && (
+          {image && (
             <div className="text-center">
               <img 
-                src={selectedImage} 
+                src={image} 
                 alt="Selected" 
                 className="img-fluid mt-3" 
                 style={{ maxHeight: '300px' }} 
