@@ -15,5 +15,22 @@
     margin: 0 5px;
     padding: 15px 30px;
     size: 1.5rem;
+    opacity: 1;
+}
+
+#background-img {
+    background-image: url('../images/cat.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 80vh; 
+  }
+
+#description{
+    background-color: #F3F2ED;
+    opacity: 0.65;
+}
+
+#text{
+    padding: 13px;
 }
 
