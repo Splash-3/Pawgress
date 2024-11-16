@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "../styles/login.css";
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -36,7 +37,7 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     style={{ margin: '10px 0', padding: '10px', width: '300px' }}
                 />
-                <button onClick={handleLogin} style={{ padding: '10px 20px', cursor: 'pointer' }}>
+                <button id="button" onClick={handleLogin} style={{cursor: 'pointer' }}>
                     Login
                 </button>
             </div>

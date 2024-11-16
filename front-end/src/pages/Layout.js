@@ -30,7 +30,7 @@ const Layout = () => {
             </div>
           </div>
           <div className="col-md-3 d-flex justify-content-end align-items-center" id="signLogin">
-            <button type="button" className="btn btn-light btn-lg navGroupButton" onClick={handleSignUp}>SignUp</button>
+            <button type="button" className="btn btn-light btn-lg navGroupButton" onClick={handleSignUp}>Login</button>
           </div>
         </div>
         <div className="row">
