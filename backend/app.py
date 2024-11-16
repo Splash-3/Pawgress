@@ -1,23 +1,19 @@
-from flask import Flask, request, jsonify
-import os
-from dotenv import load_dotenv
-import firebase_admin
-from firebase_admin import credentials, firestore
-
-# Load environment variables from .env file
-load_dotenv()
-
-# Retrieve the path to Firebase credentials from the environment variable
-cred_path = os.getenv("KEYS")
-
-if not cred_path:
-    print("Error: Firebase credentials file path not found")
-    exit(1)
-
-cred = credentials.Certificate(cred_path)
-firebase_admin.initialize_app(cred)
-
-# Initialize Firestore
-db = firestore.client()
+from flask import Flask
+from routes.users_routes import user_bp
+from routes.pets_routes import pet_bp
+from routes.predictions_routes import prediction_bp
 
 app = Flask(__name__)
+
+# Register Blueprints
+app.register_blueprint(user_bp)
+app.register_blueprint(pet_bp)
+app.register_blueprint(prediction_bp)
+
+# Test route
+@app.route("/", methods=["GET"])
+def index():
+    return "Firebase and Firestore are set up successfully!"
+
+if __name__ == "__main__":
+    app.run(debug=True)
