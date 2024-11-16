@@ -13,3 +13,7 @@ python3 -m venv venv  # Create a virtual environment if needed
 source venv/bin/activate  # Activate the virtual environment
 pip install -r requirements.txt  # Install dependencies
 python app.py  # Run the backend server
+npm install
+npm install react-scripts
+npm install react-router-dom
+npm install bootstrap@5
