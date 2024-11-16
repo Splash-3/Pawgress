@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import Login from './pages/Login';
 import { useState } from 'react';
+import Upload from './pages/UploadImage';
 
 import cat1 from "./images/cat1.jpg"
 import dog1 from "./images/dog1.jpg"
@@ -24,6 +25,11 @@ function Main() {
     navigate('/login');
   };
 
+  const handleUpload = () => {
+    setShowIntro(false);
+    navigate('/upload');
+  };
+
   return (
     <div id="return">
       <div class="container-fluid" id="navContainer">
@@ -33,7 +39,7 @@ function Main() {
           </div>
           <div className="col-md-6 d-flex justify-content-center" id="navbar">
             <div className="btn-group-lg" role="group" aria-label="Basic example">
-              <button type="button" className="btn btn-light btn-lg">Service</button>
+              <button type="button" className="btn btn-light btn-lg" onClick={handleUpload}>Service</button>
               <button type="button" className="btn btn-light btn-lg">FAQ</button>
               <button type="button" className="btn btn-light btn-lg">Contact Us</button>
             </div>
@@ -70,7 +76,7 @@ function Main() {
         <Route path="/login" element={<Login />} />
       </Routes>
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/upload" element={<Upload />} />
       </Routes>
     </div>
   );
