@@ -1,19 +1,6 @@
-from flask import Flask
-
-app = Flask(__name__)
-
-# Test route
-@app.route("/", methods=["GET"])
-def index():
-    return "Firebase and Firestore are set up successfully!"
-
 from flask import Flask, request, jsonify
-from werkzeug.utils import secure_filename
-import os
-
-# Import utility functions
-from utils.rekognition import detect_dog_or_cat
-from utils.dog_breed_classifier import classify_dog_breed
+from utils.rekognition import detect_objects_in_image_base64
+import requests
 
 app = Flask(__name__)
 
@@ -21,39 +8,20 @@ app = Flask(__name__)
 UPLOAD_FOLDER = './uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-@app.route('/upload-image', methods=['POST'])
+@app.route('/analyse-image', methods=['POST'])
 def upload_image():
-    if 'file' not in request.files:
-        return jsonify({"error": "No file part"})
+    data = request.get_json()
+    print("Received POST data", data)
 
-    file = request.files['file']
-    if file.filename == '':
-        return jsonify({"error": "No selected file"})
+    if not data or "image" not in data:
+        return jsonify({'error": "missing "image" in data'}), 400
 
-    if file:
-        # Secure and save the file temporarily
-        filename = secure_filename(file.filename)
-        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        file.save(file_path)
-
-        # Open the file for reading
-        with open(file_path, 'rb') as image_file:
-            # Step 1: Check if the image is a dog or a cat using Rekognition
-            pet_type = detect_dog_or_cat(image_file)
-            if not pet_type:
-                return jsonify({"error": "Neither a dog nor a cat detected"})
-
-            # Step 2: If it's a dog, classify the breed
-            if pet_type == 'dog':
-                breed_info = classify_dog_breed(image_file)
-                return jsonify({
-                    "pet_type": pet_type,
-                    "breed": breed_info.get("breed", "Unknown"),
-                    "confidence": breed_info.get("confidence", "N/A")
-                })
-
-            # If it's a cat, return that info
-            return jsonify({"pet_type": pet_type})
+    try:
+        response = detect_objects_in_image_base64(data["image"])
+        return jsonify(response)
+    except Exception as e:
+        print(f"Error detecting objects: {e}")
+        return jsonify({"error": "Failed to process the image."}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
