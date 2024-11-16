@@ -32,10 +32,10 @@ function Main() {
 
   return (
     <div id="return">
-      <div class="container-fluid" id="navContainer">
-        <div class="row">
-          <div class="col-md-3" id="logo">
-            <h1 class="display-3" id="homeButton">Pawgress</h1>
+      <div className="container-fluid" id="navContainer">
+        <div className="row">
+          <div className="col-md-3" id="logo">
+            <h1 className="display-3" id="homeButton">Pawgress</h1>
           </div>
           <div className="col-md-6 d-flex justify-content-center" id="navbar">
             <div className="btn-group-lg" role="group" aria-label="Basic example">
@@ -44,16 +44,16 @@ function Main() {
               <button type="button" className="btn btn-light btn-lg">Contact Us</button>
             </div>
           </div>
-          <div class="col-md-3" id="signLogin">
-            <button type="button" class="btn btn-light btn-lg" onClick={handleSignUp}>SignUp</button>
+          <div className="col-md-3" id="signLogin">
+            <button type="button" className="btn btn-light btn-lg" onClick={handleSignUp}>SignUp</button>
           </div>
         </div>
       </div>
 
       {showIntro && (
-        <div class="container-fluid" id="descContainer">
-          <div class="row">
-            <div class="col-md-6" id="description">
+        <div className="container-fluid" id="descContainer">
+          <div className="row">
+            <div className="col-md-6" id="description">
               <p>
                 Have you ever wondered how to give your pet the best care possible? 
                 With Pawgress, all it takes is a simple picture of your pet! 
@@ -61,11 +61,11 @@ function Main() {
                 Whether you’re a first-time pet owner or a seasoned animal lover, Pawgress is here to guide you every step of the way in ensuring a happy, healthy future for your furry companion.
               </p>
             </div>
-            <div class="col-md-6" id="petImgs">
+            <div className="col-md-6" id="petImgs">
               {/* Add your pet images or content here */}
             </div>
           </div>
-          <div class="row">
+          <div className="row">
             {/* Additional content can go here */}
           </div>
         </div>
