@@ -1,23 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="return">
+      <div class="container-fluid" id="navContainer">
+        <div class="row">
+          <div class="col-md-3" id="logo">
+            <h1>Pawgress</h1>
+          </div>
+          <div class="col-md-6 d-flex justify-content-center" id="navbar">
+            <div class="btn-group-lg" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-light btn-lg">Service</button>
+              <button type="button" class="btn btn-light btn-lg">FAQ</button>
+              <button type="button" class="btn btn-light btn-lg">Contact Us</button>
+            </div>
+          </div>
+          <div class="col-md-3" id="signLogin">
+            <button type="button" class="btn btn-light btn-lg">SignUp</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid" id="descContainer">
+        <div class="row">
+          <div class="col-md-6" id="description">
+
+          </div>
+          <div class="col-md-6" id="petImgs">
+
+          </div>
+        </div>
+        <div class="row">
+
+        </div>
+      </div>      
     </div>
   );
 }
