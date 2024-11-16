@@ -25,11 +25,10 @@ const Landing = () => {
         <div className="container" id="descContainer">
           <div className="row">
             <div className="col-md-6 d-flex justify-content-center align-items-center" id="description">
-              <p >
+              <p className="fw-bold fs-4">
                 Have you ever wondered how to give your pet the best care possible? 
                 With Pawgress, all it takes is a simple picture of your pet! 
-                Our intelligent platform uses cutting-edge technology to analyze your pet's photo and provide personalized insights into their breed, characteristics, and unique care needs. 
-                Whether you’re a first-time pet owner or a seasoned animal lover, Pawgress is here to guide you every step of the way in ensuring a happy, healthy future for your furry companion.
+                Pawgress is here to guide you every step of the way in ensuring a happy, healthy future for your furry companion.
               </p>
             </div>
             <div className="col-md-6" id="petImgs">
