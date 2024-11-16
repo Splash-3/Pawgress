@@ -1,18 +1,19 @@
 import requests
 
-def classify_dog_breed(image_file):
-    api_url = "https://api.example.com/dog-breed-classification"  # Replace with the actual Dog Breed API URL
-    api_key = "your_api_key"  # Replace with your actual API key
+url = "https://dog-breed-classification-api.p.rapidapi.com/dog_breed_classification"
 
-    # Upload the image to the Dog Breed Classification API (handle it as per API requirements)
-    files = {'file': image_file}
-    headers = {
-        "Authorization": f"Bearer {api_key}",
-    }
+headers = {
+    "x-rapidapi-key": "f4d1540488msha5bd6e2f0138dd8p1ddcb3jsn061cc6715f19",
+    "x-rapidapi-host": "dog-breed-classification-api.p.rapidapi.com"
+}
 
-    response = requests.post(api_url, headers=headers, files=files)
+# Open the image file in binary mode
+with open("path/to/your/image.jpg", "rb") as image_file:
+    files = {"file": image_file}
+    response = requests.post(url, headers=headers, files=files)
 
-    if response.status_code == 200:
-        return response.json()  # Returns the breed and confidence
-    else:
-        return {"error": "Unable to classify breed"}
+# Check response
+if response.status_code == 200:
+    print(response.json())
+else:
+    print(f"Error: {response.status_code} - {response.text}")
