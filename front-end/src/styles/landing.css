@@ -8,4 +8,12 @@
     opacity: 1;
 }
 
+.navGroupButton{
+    background-color: #88E788;
+    border: none;
+    border-radius: 10px;
+    margin: 0 5px;
+    padding: 15px 30px;
+    size: 1.5rem;
+}
 

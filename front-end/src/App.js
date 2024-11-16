@@ -6,6 +6,7 @@ import Upload from './pages/UploadImage';
 import Landing from './pages/Landing';
 import Layout from './pages/Layout';
 import Dashboard from './pages/Dashboard';
+import GetStarted from './pages/GetStarted';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="upload" element={<Upload />} />
           <Route path="dashboard" element={<Dashboard />} />
+          <Route path="get-started" element={<GetStarted />} />
         </Route>
       </Routes>
     </Router>
