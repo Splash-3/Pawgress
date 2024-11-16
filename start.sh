@@ -2,7 +2,7 @@
 
 # Navigate to the frontend folder and start the React app
 echo "Starting React frontend..."
-cd frontend
+cd front-end
 npm install  # Ensures dependencies are installed
 npm start &  # Run the React app in the background
 
