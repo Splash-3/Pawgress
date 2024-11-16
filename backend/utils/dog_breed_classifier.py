@@ -20,5 +20,5 @@ def classify_dog_breed(image_path):
         return {"error": f"Error: {response.status_code} - {response.text}"}
 
 # Example usage
-result = classify_dog_breed("path/to/your/image.jpg")
-print(result)
+# result = classify_dog_breed("path/to/your/image.jpg")
+# print(result)

@@ -6,4 +6,4 @@ source venv/bin/activate  # Activate the virtual environment
 pip install -r requirements.txt  # Install dependencies
 
 # Run the backend server on port 5001
-flask --app app.py --debug run --port 3001
+flask --app app.py --debug run --port 6000
