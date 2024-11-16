@@ -1,6 +1,6 @@
 import requests
 
-def classify_dog_breed(image_path):
+def identify_dog_breed(image_path):
     url = "https://dog-breed-classification-api.p.rapidapi.com/dog_breed_classification"
     
     headers = {

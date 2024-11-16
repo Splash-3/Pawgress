@@ -8,29 +8,12 @@ const UploadImage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
-    // Load an image from a URL when the component mounts
-    const loadImageFromURL = async () => {
-        try {
-            const response = await fetch("images/cat2.jpg");
-            console.log(response);
-            const blob = await response.blob();
-            const initialFile = new File([blob], "default.jpg", { type: blob.type });
-            setFile(initialFile);
-        } catch (error) {
-            console.error("Failed to load the default image:", error);
-        }
-    };
-
-    loadImageFromURL();
-  }, []);
-
-  useEffect(() => {
       if (file) {
           const reader = new FileReader();
           reader.onload = (e) => {
               console.log("File loaded");
               setImage(e.target.result);
-              console.log(e.target.result);
+              // console.log(e.target.result);
           };
           reader.readAsDataURL(file);
       }
