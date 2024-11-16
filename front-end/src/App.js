@@ -25,22 +25,6 @@ function Main() {
   };
 
   return (
-    <Router>
-      <Main />
-    </Router>
-  );
-}
-
-function Main() {
-  const navigate = useNavigate();
-  const [showIntro, setShowIntro] = useState(true);
-
-  const handleSignUp = () => {
-    setShowIntro(false);
-    navigate('/login');
-  };
-
-  return (
     <div id="return">
       <div class="container-fluid" id="navContainer">
         <div class="row">
@@ -80,7 +64,7 @@ function Main() {
           </div>
         </div>
       )}
-      )}
+
 
       <Routes>
         <Route path="/login" element={<Login />} />
