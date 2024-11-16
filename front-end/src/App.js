@@ -1,4 +1,7 @@
 import './App.css';
+import cat1 from "./images/cat1.jpg"
+import dog1 from "./images/dog1.jpg"
+import dog2 from "./images/dog2.jpg"
 
 function App() {
   return (
@@ -6,7 +9,7 @@ function App() {
       <div class="container-fluid" id="navContainer">
         <div class="row">
           <div class="col-md-3" id="logo">
-            <h1>Pawgress</h1>
+            <h1 class="display-3" id="homeButton">Pawgress</h1>
           </div>
           <div class="col-md-6 d-flex justify-content-center" id="navbar">
             <div class="btn-group-lg" role="group" aria-label="Basic example">
@@ -32,11 +35,10 @@ function App() {
             </p>
           </div>
           <div class="col-md-6" id="petImgs">
-            
+            <img src={cat1} class="img-fluid" alt="cat1"/>
           </div>
         </div>
         <div class="row">
-
         </div>
       </div>      
     </div>
