@@ -1,4 +1,4 @@
-from firebase_config import db
+from backend.firebase_config import db
 
 def get_prediction(pet_id):
     return db.collection("Prediction").document(pet_id).get().to_dict()

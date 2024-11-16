@@ -4,8 +4,8 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 
 # Load environment variables
-load_dotenv()
-cred_path = os.getenv("KEYS")
+load_dotenv(dotenv_path="./.env")
+cred_path = os.getenv("FIREBASE_CREDENTIALS")
 
 # Initialize Firebase
 if not cred_path:

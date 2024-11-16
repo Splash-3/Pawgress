@@ -1,7 +1,7 @@
 from flask import Flask
-from backend.routes.users import user_bp
-from backend.routes.pets import pet_bp
-from backend.routes.predictions import prediction_bp
+from routes.users import user_bp
+from routes.pets import pet_bp
+from routes.predictions import prediction_bp
 
 app = Flask(__name__)
 
