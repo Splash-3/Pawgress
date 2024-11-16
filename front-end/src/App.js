@@ -25,17 +25,33 @@ function Main() {
   };
 
   return (
+    <Router>
+      <Main />
+    </Router>
+  );
+}
+
+function Main() {
+  const navigate = useNavigate();
+  const [showIntro, setShowIntro] = useState(true);
+
+  const handleSignUp = () => {
+    setShowIntro(false);
+    navigate('/login');
+  };
+
+  return (
     <div id="return">
       <div class="container-fluid" id="navContainer">
         <div class="row">
           <div class="col-md-3" id="logo">
             <h1 class="display-3" id="homeButton">Pawgress</h1>
           </div>
-          <div class="col-md-6 d-flex justify-content-center" id="navbar">
-            <div class="btn-group-lg" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-light btn-lg">Service</button>
-              <button type="button" class="btn btn-light btn-lg">FAQ</button>
-              <button type="button" class="btn btn-light btn-lg">Contact Us</button>
+          <div className="col-md-6 d-flex justify-content-center" id="navbar">
+            <div className="btn-group-lg" role="group" aria-label="Basic example">
+              <button type="button" className="btn btn-light btn-lg">Service</button>
+              <button type="button" className="btn btn-light btn-lg">FAQ</button>
+              <button type="button" className="btn btn-light btn-lg">Contact Us</button>
             </div>
           </div>
           <div class="col-md-3" id="signLogin">
@@ -64,7 +80,11 @@ function Main() {
           </div>
         </div>
       )}
+      )}
 
+      <Routes>
+        <Route path="/login" element={<Login />} />
+      </Routes>
       <Routes>
         <Route path="/login" element={<Login />} />
       </Routes>
