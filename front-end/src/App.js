@@ -24,10 +24,15 @@ function App() {
       <div class="container-fluid" id="descContainer">
         <div class="row">
           <div class="col-md-6" id="description">
-
+            <p>
+              Have you ever wondered how to give your pet the best care possible? 
+              With Pawgress, all it takes is a simple picture of your pet! 
+              Our intelligent platform uses cutting-edge technology to analyze your pet's photo and provide personalized insights into their breed, characteristics, and unique care needs. 
+              Whether you’re a first-time pet owner or a seasoned animal lover, Pawgress is here to guide you every step of the way in ensuring a happy, healthy future for your furry companion.
+            </p>
           </div>
           <div class="col-md-6" id="petImgs">
-
+            
           </div>
         </div>
         <div class="row">
