@@ -1,14 +1,6 @@
 from flask import Flask
-from routes.users import user_bp
-from routes.pets import pet_bp
-from routes.predictions import prediction_bp
 
 app = Flask(__name__)
-
-# Register Blueprints
-app.register_blueprint(user_bp)
-app.register_blueprint(pet_bp)
-app.register_blueprint(prediction_bp)
 
 # Test route
 @app.route("/", methods=["GET"])

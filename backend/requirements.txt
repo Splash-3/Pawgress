@@ -4,3 +4,4 @@ boto3==1.26.12
 google-cloud-storage==2.8.0
 firebase-admin==6.1.0
 werkzeug==2.3.0
+dotenv==0.19.1
