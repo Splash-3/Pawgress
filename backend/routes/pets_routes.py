@@ -20,3 +20,17 @@ def add_pet_route():
         return jsonify({"message": "Pet added successfully"}), 201
     except Exception as e:
         return jsonify({"error": str(e)}), 400
+
+@pet_bp("/get_pet", methods=["GET"])
+def get_pet_route():
+    pet_id = request.args.get("pet_id")
+
+    if not pet_id:
+        return jsonify({"Error":"Missing pet_id param"})
+
+    pet_data = get_pet(pet_id)
+
+    if pet_id is None:
+        return jsonify({"Error":"pet_id not found"})
+
+    return jsonify(pet_data), 200 

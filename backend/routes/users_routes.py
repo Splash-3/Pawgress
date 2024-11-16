@@ -17,3 +17,18 @@ def create_user_route():
         return jsonify({"message": "User created successfully"}), 201
     except Exception as e:
         return jsonify({"error": str(e)}), 400
+    
+@user_bp.route("/get-user", methods=["GET"])
+def get_user_route():
+    user_id = request.args.get("user_id")
+
+    if not user_id:
+        return jsonify({"Error":"User_id param missing"})
+    
+    user_data = get_user(user_id)
+
+    if user_data is None:
+        return jsonify({"Error":"User not found"})
+    
+    return jsonify(user_data), 200
+
