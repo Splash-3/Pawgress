@@ -1,10 +1,15 @@
 import React from 'react';
+import { useEffect } from 'react';
 
-const Settings = () => {
+const Settings = ({ data }) => {
+  useEffect(() => {
+    // This will run whenever data changes
+    console.log('Data:', data);
+  }, [data]);
   return (
     <div>
       <h2>Settings Component</h2>
-      <p>This is the Settings component.</p>
+      <pre>{JSON.stringify(data, null, 2)}</pre>    
     </div>
   );
 };
