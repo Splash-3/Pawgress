@@ -1,0 +1,19 @@
+#navRow{
+    background-color: #013220;
+}
+
+#homeButton{
+    color: #F3F2ED;
+}
+
+#navGroup{
+    background-color: #88E788;
+    border: none;
+    display: flex;
+}
+.navGroupButton{
+    background-color: #88E788;
+    border: none;
+    border-radius: 10px;
+    margin: 0 5px;
+}
