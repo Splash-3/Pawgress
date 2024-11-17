@@ -6,15 +6,13 @@ const PetDetailsForm = () => {
   const [petDetails, setPetDetails] = useState({
     name: '',
     age: '',
-    weight: '',
-    sex: '',
     breed: '',
-    type:''
-
+    weight: '',
+    color: '',
+    sex: '',
+    type: 'Cat' // Default value for the dropdown
   });
-
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,23 +24,17 @@ const PetDetailsForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const userId = 'user_001'; // Replace with the actual user ID
 
-    // Reset error and success messages
-    setError('');
-    setSuccess('    '); 
+    // Prepare the request payload
+    const payload = {
+      ...petDetails,
+      user_id: userId
+    };
 
+    // Send POST request to Flask API
     try {
-      // User ID (you can get this from the user's session or state)
-      const userId = "user_001"; // Replace with the actual user ID
-
-      // Prepare the request payload, including breed and animal type
-      const payload = {
-        ...petDetails,
-        user_id: userId
-      };
-
-      // Send POST request to Flask API
-      const response = await fetch('http://localhost:5000/add-pet', {
+      const response = await fetch('http://localhost:6000/add-pet', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -50,26 +42,24 @@ const PetDetailsForm = () => {
         body: JSON.stringify(payload),
       });
 
-      // Parse the response
       const data = await response.json();
 
       // Check if the pet was added successfully
       if (response.status === 201) {
-        setSuccess('Pet added successfully!');
-        console.log('Pet ID:', data.pet_id);
-        // Navigate to the pets list or another page
-        navigate('/pets');
+        setMessage('Pet added successfully.');
+        navigate('/dashboard');
       } else {
-        setError(data.error || 'Failed to add pet');
+        setMessage(data.error || 'Failed to add pet.');
       }
-    } catch (err) {
-      setError('An error occurred. Please try again later.');
+    } catch (error) {
+      setMessage('An error occurred. Please try again.');
     }
   };
 
   return (
     <div className="container mt-5">
       <h2 className="text-center mb-4">Enter Pet Details</h2>
+      {message && <p className="text-center">{message}</p>}
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">Name</label>
@@ -95,7 +85,18 @@ const PetDetailsForm = () => {
             required
           />
         </div>
-
+        <div className="mb-3">
+          <label htmlFor="breed" className="form-label">Breed</label>
+          <input
+            type="text"
+            className="form-control"
+            id="breed"
+            name="breed"
+            value={petDetails.breed}
+            onChange={handleChange}
+            required
+          />
+        </div>
         <div className="mb-3">
           <label htmlFor="weight" className="form-label">Weight</label>
           <input
@@ -104,6 +105,18 @@ const PetDetailsForm = () => {
             id="weight"
             name="weight"
             value={petDetails.weight}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="color" className="form-label">Color</label>
+          <input
+            type="text"
+            className="form-control"
+            id="color"
+            name="color"
+            value={petDetails.color}
             onChange={handleChange}
             required
           />
@@ -121,30 +134,19 @@ const PetDetailsForm = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="breed" className="form-label">Breed</label>
-          <input
-            type="text"
-            className="form-control"
-            id="breed"
-            name="breed"
-            value={petDetails.breed}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="mb-3">
           <label htmlFor="type" className="form-label">Type</label>
-          <input
-            type="text"
+          <select
             className="form-control"
             id="type"
             name="type"
             value={petDetails.type}
             onChange={handleChange}
             required
-          />
+          >
+            <option value="Cat">Cat</option>
+            <option value="Dog">Dog</option>
+          </select>
         </div>
-
         <div className="text-center mt-4">
           <button type="submit" className="btn btn-primary">Submit</button>
         </div>
