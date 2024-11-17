@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Profile from './Profile';
-import Pets from './Pets';
-import Settings from './Settings';
+import Profile from '../components/Profile';
+import Pets from '../components/Pets';
+import Settings from '../components/Settings';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Dashboard = () => {
@@ -18,9 +18,13 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         const userId = 'user_001'; // Replace with the actual user ID
-        const response = await fetch(`/api/data/${userId}`);
+        const response = await fetch(`http://localhost:6000/get-user?user_id=${userId}`);
         const fetchedData = await response.json();
-        setData(fetchedData);
+        if (response.ok) {
+          setData(fetchedData);
+        } else {
+          console.error('Error fetching user data:', fetchedData.error);
+        }
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -36,7 +40,7 @@ const Dashboard = () => {
       case 'pets':
         return <Pets data={data.pets} />;
       case 'settings':
-        return <Settings data={data.settings} />;
+        return <Settings data={data} />;
       default:
         return <Profile data={data} />;
     }

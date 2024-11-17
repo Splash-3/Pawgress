@@ -4,7 +4,7 @@ const Profile = ({ data }) => {
   return (
     <div>
       <h2>Profile Component</h2>
-      <p>Full Name :{data.fullName}</p>
+      <p>Full Name :{data.name}</p>
       <p>Email :{data.email}</p>
     </div>
   );
