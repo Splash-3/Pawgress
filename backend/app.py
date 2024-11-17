@@ -1,12 +1,32 @@
 from flask import Flask, request, jsonify
 from utils.rekognition import detect_objects_in_image_base64
-import requests
+from flask import Flask, request, jsonify
+from pymongo import MongoClient
+from dotenv import load_dotenv
+from datetime import datetime
+import os
 
 app = Flask(__name__)
 
 # Temporary file storage
 UPLOAD_FOLDER = './uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+load_dotenv()
+app = Flask(__name__)
+
+# MongoDB connection
+url = os.getenv("MONGODB_URI")
+client = MongoClient(url)
+db = client["flaskDatabase"]
+users_collection = db["users"]
+pets_collection = db["pets"]
+predictions_collection = db["predictions"]
+
+# Home route
+@app.route('/')
+def home():
+    return "Welcome to the Flask and MongoDB API!"
 
 @app.route('/analyse-image', methods=['POST'])
 def upload_image():

@@ -3,10 +3,7 @@ requests
 boto3
 google-cloud-storage
 firebase-admin
-werkzeug
-dotenv
-pymongo
-bson
+python-dotenv
 datetime
 bcrypt
 hashlib
