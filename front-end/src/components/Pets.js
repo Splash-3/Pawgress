@@ -15,11 +15,24 @@ const Pets = ({ data }) => {
             <img src={mySVG} alt="Plus" draggable = "false" style={{ width: '16px', height: '16px' }}></img>
           </button> 
             <ul>
-              {data.pets.map((pet, index) => (
+              {data.pets.map((pets, index) => (
                 <li key={index}>
-                  <p>Name: {pet.name}</p>
-                  <p>Age: {pet.age}</p>
-                  <p>Breed: {pet.breed}</p>
+                  <p>Name: {pets.name}</p>
+                  <p>Age: {pets.age}</p>
+                  <p>Breed: {pets.breed}</p>
+                  <p>Weight: {pets.weight}</p>
+                  <p>Color: {pets.color}</p>
+                  <p>Sex: {pets.sex}</p>
+                  {pet.photo && (
+                    <div>
+                      <p>Photo:</p>
+                      <img 
+                        src={pet.photo} 
+                        alt={`${pet.name}'s photo`} 
+                        style={{ width: '60px', height: '60px', objectFit: 'cover' }}
+                      />
+                    </div>
+                  )}
                 </li>))}
             </ul>
         </div>
