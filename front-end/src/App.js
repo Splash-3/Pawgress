@@ -7,6 +7,7 @@ import Landing from './pages/Landing';
 import Layout from './pages/Layout';
 import Dashboard from './pages/Dashboard';
 import GetStarted from './pages/GetStarted';
+import PetDetailsForm from './pages/PetDetailsForm';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="upload" element={<Upload />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="get-started" element={<GetStarted />} />
+          <Route path="pet-details" element={<PetDetailsForm />} />
         </Route>
       </Routes>
     </Router>

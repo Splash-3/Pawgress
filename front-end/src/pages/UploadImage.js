@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from 'react-router-dom';
 
 const UploadImage = () => {
   const [data, setData] = useState({});
   const [file, setFile] = useState(null);
   const [image, setImage] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
+  const navigate = useNavigate();
+  
+  const handleNext = () => {
+    navigate('/pet-details');
+  };
 
   useEffect(() => {
       if (file) {
@@ -77,6 +83,10 @@ const UploadImage = () => {
               />
             </div>
           )}
+          <div className="text-center mt-4">
+            {/* <button className="btn btn-secondary" onClick={onBack}>Back to Registration</button> */}
+            <button className="btn btn-primary ml-2" onClick={handleNext}>Next</button>
+          </div>
         </div>
       </div>
     </div>

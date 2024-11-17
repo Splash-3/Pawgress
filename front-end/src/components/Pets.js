@@ -21,14 +21,13 @@ const Pets = ({ data }) => {
                   <p>Age: {pets.age}</p>
                   <p>Breed: {pets.breed}</p>
                   <p>Weight: {pets.weight}</p>
-                  <p>Color: {pets.color}</p>
                   <p>Sex: {pets.sex}</p>
-                  {pet.photo && (
+                  {pets.photo && (
                     <div>
                       <p>Photo:</p>
                       <img 
-                        src={pet.photo} 
-                        alt={`${pet.name}'s photo`} 
+                        src={pets.photo} 
+                        alt={`${pets.name}'s photo`} 
                         style={{ width: '60px', height: '60px', objectFit: 'cover' }}
                       />
                     </div>
