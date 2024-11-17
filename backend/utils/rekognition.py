@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import base64
 from utils.dog_breed_classifier import identify_dog_breed
 from utils.cat_breed_classifier import identify_cat_breed
+from utils.s3_uploader import upload_to_s3
 
 # Load environment variables
 load_dotenv()
@@ -51,6 +52,10 @@ def detect_objects_in_image(image_bytes, min_confidence=70):
         for label in response['Labels']:
             if label['Confidence'] >= min_confidence:
                 if label['Name'] == "Dog":
+                    # Upload to S3
+                    upload_response = upload_to_s3(image_bytes)
+                    if "error" in upload_response:
+                        return {"error": "Failed to upload image to S3."}
                     breed = identify_dog_breed(image_bytes)
                     print(breed)
                     # breed = "Poodle"
