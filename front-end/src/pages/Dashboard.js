@@ -1,22 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Profile from './Profile';
+import Pets from './Pets';
+import Settings from './Settings';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Profile from '../components/Profile';
-import Pets from '../components/Pets';
-import Settings from '../components/Settings';
 
 const Dashboard = () => {
   const [activeComponent, setActiveComponent] = useState('profile');
+  const [data, setData] = useState({
+    fullName: '',
+    email: '',
+    pets: [],
+    settings: {}
+  });
+
+  useEffect(() => {
+    // Fetch data from the database and update the state
+    const fetchData = async () => {
+      try {
+        const userId = 'user_001'; // Replace with the actual user ID
+        const response = await fetch(`/api/data/${userId}`);
+        const fetchedData = await response.json();
+        setData(fetchedData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const renderComponent = () => {
     switch (activeComponent) {
       case 'profile':
-        return <Profile />;
+        return <Profile data={data} />;
       case 'pets':
-        return <Pets />;
+        return <Pets data={data.pets} />;
       case 'settings':
-        return <Settings />;
+        return <Settings data={data.settings} />;
       default:
-        return <Profile />;
+        return <Profile data={data} />;
     }
   };
 

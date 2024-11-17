@@ -1,10 +1,11 @@
 import React from 'react';
 
-const Profile = () => {
+const Profile = ({ data }) => {
   return (
     <div>
       <h2>Profile Component</h2>
-      <p>This is the Profile component.</p>
+      <p>Full Name :{data.fullName}</p>
+      <p>Email :{data.email}</p>
     </div>
   );
 };
