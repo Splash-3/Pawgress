@@ -6,7 +6,7 @@ import Upload from './pages/UploadImage';
 import Landing from './pages/Landing';
 import Layout from './pages/Layout';
 import Dashboard from './pages/Dashboard';
-import GetStarted from './pages/GetStarted';
+import Register from './pages/Register';
 import PetDetailsForm from './pages/PetDetailsForm';
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="upload" element={<Upload />} />
           <Route path="dashboard" element={<Dashboard />} />
-          <Route path="get-started" element={<GetStarted />} />
+          <Route path="register" element={<Register />} />
           <Route path="pet-details" element={<PetDetailsForm />} />
         </Route>
       </Routes>
