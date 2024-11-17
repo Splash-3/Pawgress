@@ -9,7 +9,7 @@ const PetDetailsForm = () => {
     weight: '',
     sex: '',
     breed: '',
-    animalType:''
+    type:''
 
   });
 
@@ -28,8 +28,8 @@ const PetDetailsForm = () => {
     e.preventDefault();
 
     // Reset error and success messages
-    setError('hehe');
-    setSuccess('haha'); 
+    setError('');
+    setSuccess('    '); 
 
     try {
       // User ID (you can get this from the user's session or state)
@@ -139,7 +139,7 @@ const PetDetailsForm = () => {
             className="form-control"
             id="type"
             name="type"
-            value={petDetails.}
+            value={petDetails.type}
             onChange={handleChange}
             required
           />

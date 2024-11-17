@@ -194,13 +194,8 @@ def add_pet():
         type = data.get("type")
         sex = data.get("sex")
 
-        # Validate the input data
-        if not user_id or not name or not age or not breed:
+        if not all([name, age, weight, sex, breed, type, user_id]):
             return jsonify({"error": "Missing required fields"}), 400
-
-        # Check if the user exists
-        if not user_exists(user_id):
-            return jsonify({"error": "User not found"}), 404
 
         # Create the pet document
         pet = {
