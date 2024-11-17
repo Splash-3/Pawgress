@@ -28,15 +28,8 @@ const PetDetailsForm = () => {
     e.preventDefault();
 
     // Reset error and success messages
-    setError('');
-    setSuccess('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    console.log('Pet Details:', petDetails);
-    // Navigate to another page or show a success message
-  };
+    setError('hehe');
+    setSuccess('haha'); 
 
     try {
       // User ID (you can get this from the user's session or state)
@@ -134,7 +127,7 @@ const PetDetailsForm = () => {
             className="form-control"
             id="breed"
             name="breed"
-            value={petDetails.sex}
+            value={petDetails.breed}
             onChange={handleChange}
             required
           />
@@ -146,7 +139,7 @@ const PetDetailsForm = () => {
             className="form-control"
             id="type"
             name="type"
-            value={petDetails.sex}
+            value={petDetails.}
             onChange={handleChange}
             required
           />

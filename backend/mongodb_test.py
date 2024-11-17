@@ -191,8 +191,7 @@ def add_pet():
         age = data.get("age")
         weight = data.get("weight") 
         breed = data.get("breed")
-        isdog = data.get("isdog")
-        iscat = data.get("iscat")
+        type = data.get("type")
         sex = data.get("sex")
 
         # Validate the input data
@@ -203,14 +202,6 @@ def add_pet():
         if not user_exists(user_id):
             return jsonify({"error": "User not found"}), 404
 
-        # Ensure `isdog` and `iscat` are boolean values
-        if not isinstance(isdog, bool) or not isinstance(iscat, bool):
-            return jsonify({"error": "`isdog` and `iscat` must be boolean values"}), 400
-
-        # Ensure that only one of `isdog` or `iscat` is true
-        if isdog == iscat:
-            return jsonify({"error": "Either `isdog` or `iscat` must be true, but not both"}), 400
-
         # Create the pet document
         pet = {
             "pet_id": pet_id,
@@ -220,8 +211,7 @@ def add_pet():
             "sex": sex,
             "weight": float(weight),    
             "breed": breed,
-            "isdog": isdog, #bool
-            "iscat": iscat, #bool
+            "type":type,
             "createdAt": datetime.utcnow(),
             "updatedAt": datetime.utcnow()
         }
