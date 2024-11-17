@@ -1,3 +1,4 @@
 # .gitignore
 .env
 keys.json
+venv/
