@@ -55,18 +55,7 @@ const PetDetailsForm = () => {
             required
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="breed" className="form-label">Breed</label>
-          <input
-            type="text"
-            className="form-control"
-            id="breed"
-            name="breed"
-            value={petDetails.breed}
-            onChange={handleChange}
-            required
-          />
-        </div>
+
         <div className="mb-3">
           <label htmlFor="weight" className="form-label">Weight</label>
           <input
@@ -91,20 +80,7 @@ const PetDetailsForm = () => {
             required
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="type" className="form-label">Type</label>
-          <select
-            className="form-control"
-            id="type"
-            name="type"
-            value={petDetails.type}
-            onChange={handleChange}
-            required
-          >
-            <option value="Cat">Cat</option>
-            <option value="Dog">Dog</option>
-          </select>
-        </div>
+
         <div className="text-center mt-4">
           <button type="submit" className="btn btn-primary">Submit</button>
         </div>
