@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Profile from './Profile';
-import Pets from './Pets';
-import Settings from './Settings';
+import Profile from '../components/Profile';
+import Pets from '../components/Pets';
+import Settings from '../components/Settings';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Dashboard = () => {
