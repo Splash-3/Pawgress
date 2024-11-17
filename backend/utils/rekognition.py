@@ -51,8 +51,9 @@ def detect_objects_in_image(image_bytes, min_confidence=70):
         for label in response['Labels']:
             if label['Confidence'] >= min_confidence:
                 if label['Name'] == "Dog":
-                    # breed = identify_dog_breed(image_bytes)
-                    breed = "Poodle"
+                    breed = identify_dog_breed(image_bytes)
+                    print(breed)
+                    # breed = "Poodle"
                 elif label['Name'] == "Cat":
                     # breed = identify_cat_breed(image_bytes)
                     breed = "Siamese"
