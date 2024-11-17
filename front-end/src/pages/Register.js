@@ -10,7 +10,7 @@ const Register = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
     // Basic validation
@@ -24,15 +24,32 @@ const Register = () => {
       return;
     }
 
-    // Handle registration logic here
-    console.log('Full Name:', fullName);
-    console.log('Email:', email);
-    console.log('Password:', password);
-    console.log('Confirm Password:', confirmPassword);
+    // Send registration data to the backend
+    try {
+      const response = await fetch('http://localhost:6000/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fullName,
+          email,
+          password,
+        }),
+      });
 
-    // Clear error message and navigate to the next page
-    setErrorMessage('');
-    navigate('/get-started');
+      const data = await response.json();
+
+      if (response.ok) {
+        // Clear error message and navigate to the next page
+        setErrorMessage('');
+        navigate('/get-started');
+      } else {
+        setErrorMessage(data.error || 'Registration failed');
+      }
+    } catch (error) {
+      setErrorMessage('An error occurred. Please try again.');
+    }
   };
 
   return (

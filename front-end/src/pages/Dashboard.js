@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import Profile from './Profile';
+import Pets from './Pets';
+import Settings from './Settings';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Profile from '../components/Profile';
-import Pets from '../components/Pets';
-import Settings from '../components/Settings';
 
 const Dashboard = () => {
   const [activeComponent, setActiveComponent] = useState('profile');
@@ -13,42 +13,34 @@ const Dashboard = () => {
     settings: {}
   });
 
-  const renderComponent = () => {
-    switch (activeComponent) {
-      case 'profile':
-        return <Profile data={data} />;
-      case 'pets':
-        return <Pets data={data}/>;
-      case 'settings':
-        return <Settings data={data}/>;
-      default:
-        return <Profile data={data} />;
-    }
-  };
-
-  // useEffect(() => {
-  //   // whenever data changes, this will run
-  //   console.log('Data:', data);
-  //   setFullName(data.fullName);
-  //   setEmail(data.email);
-    
-  // }, [data]);
-
   useEffect(() => {
     // Fetch data from the database and update the state
     const fetchData = async () => {
-      // Replace with your actual data fetching logic
-      const fetchedData = await fetch('/api/data').then(res => res.json());
-      setData(fetchedData);
+      try {
+        const userId = 'user_001'; // Replace with the actual user ID
+        const response = await fetch(`/api/data/${userId}`);
+        const fetchedData = await response.json();
+        setData(fetchedData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
     };
 
     fetchData();
   }, []);
 
-  // useEffect(() => {
-  //   // This will run whenever data changes
-  //   console.log('Data:', data);
-  // }, [data]);
+  const renderComponent = () => {
+    switch (activeComponent) {
+      case 'profile':
+        return <Profile data={data} />;
+      case 'pets':
+        return <Pets data={data.pets} />;
+      case 'settings':
+        return <Settings data={data.settings} />;
+      default:
+        return <Profile data={data} />;
+    }
+  };
 
   return (
     <div className="container-fluid vh-100">

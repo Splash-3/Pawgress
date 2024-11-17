@@ -24,26 +24,68 @@ const Settings = ({ data }) => {
     setConfirmPassword(e.target.value);
   };
 
-  const handleUpdateEmail = () => {
-    // Handle email update logic here
-    console.log('Updated Email:', email);
-    setMessage('Email updated successfully.');
+  const handleUpdateEmail = async () => {
+    try {
+      const response = await fetch(`http://localhost:6000/update-email/${data.userId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        setMessage('Email updated successfully.');
+      } else {
+        setMessage(result.error || 'Failed to update email.');
+      }
+    } catch (error) {
+      setMessage('An error occurred. Please try again.');
+    }
   };
 
-  const handleResetPassword = () => {
+  const handleResetPassword = async () => {
     if (newPassword !== confirmPassword) {
       setMessage('Passwords do not match.');
       return;
     }
-    // Handle password reset logic here
-    console.log('New Password:', newPassword);
-    setMessage('Password reset successfully.');
+
+    try {
+      const response = await fetch(`http://localhost:6000/update-password/${data.userId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ newPassword }),
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        setMessage('Password updated successfully.');
+      } else {
+        setMessage(result.error || 'Failed to update password.');
+      }
+    } catch (error) {
+      setMessage('An error occurred. Please try again.');
+    }
   };
 
-  const handleDeleteUser = () => {
-    // Handle user deletion logic here
-    console.log('User deleted');
-    setMessage('User and all their information deleted successfully.');
+  const handleDeleteUser = async () => {
+    try {
+      const response = await fetch(`http://localhost:6000/delete-user/${data.userId}`, {
+        method: 'DELETE',
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        setMessage('User and all their information deleted successfully.');
+      } else {
+        setMessage(result.error || 'Failed to delete user.');
+      }
+    } catch (error) {
+      setMessage('An error occurred. Please try again.');
+    }
   };
 
   return (
